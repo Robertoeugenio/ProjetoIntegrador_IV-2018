@@ -1,11 +1,14 @@
 package br.edu.iftm.ppi.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.edu.iftm.ppi.domain.Usuario;
+import br.edu.iftm.ppi.exceptions.DataIntegrityException;
 import br.edu.iftm.ppi.exceptions.ObjectNotFoundException;
 import br.edu.iftm.ppi.repositories.UsuarioRepository;
 
@@ -36,28 +39,28 @@ public class UsuarioService {
 		
 	}
 //	
-//	public Cliente update(Cliente obj) {
-//		Cliente newObj = find(obj.getId());
+//	public Usuario update(Usuario obj) {
+//		Usuario newObj = find(obj.getId());
 //		updateData(newObj, obj);
 //		return repo.save(newObj);
 //		
 //	}
 //	
-//	public void delete(Integer id) {
-//		find(id);
-//		try {
-//		repo.deleteById(id);
-//		}
-//		catch (DataIntegrityViolationException e) {
-//			throw new DataIntegrityException("Não é possível excluir por que há entidades relacionadas");
-//			
-//		}
-//	}
+	public void delete(Integer id) {
+		find(id);
+		try {
+		repo.deleteById(id);
+		}
+		catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possível excluir por que há entidades relacionadas");
+			
+		}
+	}
 //	
-//	public List<Cliente> findAll(){
-//		return repo.findAll();
-//		
-//	}
+	public List<Usuario> findAll(){
+		return repo.findAll();
+		
+	}
 //	
 //	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
 //		
