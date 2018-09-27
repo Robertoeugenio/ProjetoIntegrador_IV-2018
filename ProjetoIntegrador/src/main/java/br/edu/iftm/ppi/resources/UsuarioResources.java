@@ -43,30 +43,30 @@ public class UsuarioResources {
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-//	
+	
 //	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-//	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id){
-//		Cliente obj = service.fromDTO(objDto);
+//	public ResponseEntity<Void> update(@Valid @RequestBody Usuario obj, @PathVariable Integer id){
+//		//Usuario obj = service.fromDTO(objDto);
 //		obj.setId(id);
 //		obj = service.update(obj);
 //		return ResponseEntity.noContent().build();
 //	}
 //	
-//	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-//	public ResponseEntity<Cliente> delete(@PathVariable Integer id) {
-//		service.delete(id);
-//		return ResponseEntity.noContent().build();
-//		
-//	}
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Usuario> delete(@PathVariable Integer id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+		
+	}
 //
-//	@RequestMapping( method=RequestMethod.GET)
-//	public ResponseEntity<List<ClienteDTO>> findAll() {
-//			
-//		List<Cliente> list = service.findAll();
-//		
-//		List<ClienteDTO> listDto = list.stream().map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
-//		return ResponseEntity.ok().body(listDto);
-//	}
+	@RequestMapping( method=RequestMethod.GET)
+	public ResponseEntity<List<Usuario>> findAll() {
+			
+		List<Usuario> list = service.findAll();
+		
+		//List<ClienteDTO> listDto = list.stream().map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(list);
+	}
 //	
 //	@RequestMapping(value="page", method=RequestMethod.GET)
 //	public ResponseEntity<Page<ClienteDTO>> findPage(
