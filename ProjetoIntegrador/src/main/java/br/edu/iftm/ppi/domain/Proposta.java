@@ -28,9 +28,9 @@ public class Proposta implements Serializable{
 	private String descrição;
 	private String prazo;
 	
-	@ManyToOne
-	@JoinColumn(name="fazenda_id")
-	private Fazenda fazendaProposta;
+//	@ManyToOne
+//	@JoinColumn(name="fazenda_id")
+//	private Fazenda fazendaProposta;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="propostaOrcamento")

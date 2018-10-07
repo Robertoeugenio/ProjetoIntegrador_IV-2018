@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -30,8 +31,7 @@ public class Usuario implements Serializable{
 	private String login;
 	
 	
-	@JsonIgnore
-	@OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="usuario",cascade = CascadeType.ALL)
 	private List<Fazenda> fazendas = new ArrayList<>();
 	
 	@JsonIgnore
@@ -110,6 +110,26 @@ public class Usuario implements Serializable{
 	public void setLogin(String login) {
 		this.login = login;
 	}
+
+
+	public List<Fazenda> getFazendas() {
+		return fazendas;
+	}
+
+
+	public void setFazendas(List<Fazenda> fazendas) {
+		this.fazendas = fazendas;
+	}
+
+//
+//	public List<Orcamento> getOrcamentos() {
+//		return orcamentos;
+//	}
+//
+//
+//	public void setOrcamentos(List<Orcamento> orcamentos) {
+//		this.orcamentos = orcamentos;
+//	}
 
 
 	@Override
