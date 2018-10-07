@@ -28,11 +28,11 @@ public class Proposta implements Serializable{
 	private String descrição;
 	private String prazo;
 	
-//	@ManyToOne
-//	@JoinColumn(name="fazenda_id")
-//	private Fazenda fazendaProposta;
+	@ManyToOne
+	@JoinColumn(name="fazenda_id")
+	private Fazenda fazendaProposta;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy="propostaOrcamento")
 	private List<Orcamento> orcamentos = new ArrayList<>();
 	
@@ -43,9 +43,9 @@ public class Proposta implements Serializable{
 	@JoinColumn(name="orcamentoEscolhido_id")
 	@MapsId
 	private Orcamento orcamentoFinal;
-//	
-//	@OneToOne(cascade=CascadeType.ALL, mappedBy="pagamentoProposta")
-//	private Proposta propostaPagamento;
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="pagamentoProposta")
+	private Proposta propostaPagamento;
 	
 	
 	@JsonIgnore

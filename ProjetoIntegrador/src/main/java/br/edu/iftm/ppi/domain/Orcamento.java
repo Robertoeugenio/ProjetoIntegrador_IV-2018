@@ -32,6 +32,7 @@ public class Orcamento implements Serializable{
 	@JoinColumn(name="usuario_id")
 	private Usuario usuarioOrcamento;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="proposta_id")
 	private Proposta propostaOrcamento;
