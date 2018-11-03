@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -26,6 +28,8 @@ public class Fazenda implements Serializable{
 	private Double longitude;
 	private Double latitude;
 	
+
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
@@ -36,12 +40,13 @@ public class Fazenda implements Serializable{
 
 	public Fazenda(){}
 
-	public Fazenda(Integer id, String nome, Double longitude, Double latitude) {
+	public Fazenda(Integer id, String nome, Double longitude, Double latitude, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		this.usuario = usuario;
 	}
 
 	public Integer getId() {
@@ -74,6 +79,14 @@ public class Fazenda implements Serializable{
 
 	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override
