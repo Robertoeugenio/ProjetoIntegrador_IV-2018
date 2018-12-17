@@ -31,6 +31,10 @@ public class Usuario implements Serializable{
 	private String login;
 	
 	
+	@OneToMany(mappedBy="propostaFeitaUsuario",cascade = CascadeType.ALL)
+	private List<Proposta> propostas = new ArrayList<>();
+	
+	
 	@OneToMany(mappedBy="usuario",cascade = CascadeType.ALL)
 	private List<Fazenda> fazendas = new ArrayList<>();
 	
@@ -138,6 +142,16 @@ public class Usuario implements Serializable{
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
+	}
+
+
+	public List<Proposta> getPropostas() {
+		return propostas;
+	}
+
+
+	public void setPropostas(List<Proposta> propostas) {
+		this.propostas = propostas;
 	}
 
 

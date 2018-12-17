@@ -40,8 +40,8 @@ public class Pagamento implements Serializable{
 //	@MapsId
 //	private Proposta proposta;
 	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="pagamentoProposta")
-	private Proposta propostaPagamento;
+//	@OneToOne(cascade=CascadeType.ALL, mappedBy="pagamentoProposta")
+//	private Proposta propostaPagamento;
 
 	public Integer getId() {
 		return id;

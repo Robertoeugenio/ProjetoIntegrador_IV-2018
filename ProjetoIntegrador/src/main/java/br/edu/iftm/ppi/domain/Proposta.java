@@ -25,7 +25,7 @@ public class Proposta implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	private String descrição;
+	private String descricao;
 	private String prazo;
 	
 	@ManyToOne
@@ -33,35 +33,41 @@ public class Proposta implements Serializable{
 	private Fazenda fazendaProposta;
 	
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="usuario_id")
+	private Usuario propostaFeitaUsuario;
+	
 	@OneToMany(mappedBy="propostaOrcamento")
 	private List<Orcamento> orcamentos = new ArrayList<>();
 	
 	
 	
-	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name="orcamentoEscolhido_id")
-	@MapsId
-	private Orcamento orcamentoFinal;
+//	@JsonIgnore
+//	@OneToOne
+//	@JoinColumn(name="orcamentoEscolhido_id")
+//	@MapsId
+//	private Orcamento orcamentoFinal;
 	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="pagamentoProposta")
-	private Proposta propostaPagamento;
+//	@OneToOne(cascade=CascadeType.ALL, mappedBy="pagamentoProposta")
+//	private Proposta propostaPagamento;
 	
 	
-	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name="pagamento_id")
-	@MapsId
-	private Pagamento pagamentoProposta;
+//	@JsonIgnore
+//	@OneToOne
+//	@JoinColumn(name="pagamento_id")
+//	@MapsId
+//	private Pagamento pagamentoProposta;
 //	
 	
 	public Proposta(){}
 
-	public Proposta(Integer id, String descrição, String prazo) {
+	public Proposta(Integer id, String descricao, String prazo, Usuario propostaFeitaUsuario) {
 		super();
 		this.id = id;
-		this.descrição = descrição;
+		this.descricao = descricao;
 		this.prazo = prazo;
+		this.propostaFeitaUsuario = propostaFeitaUsuario;
 	}
 
 	public Integer getId() {
@@ -73,11 +79,11 @@ public class Proposta implements Serializable{
 	}
 
 	public String getDescrição() {
-		return descrição;
+		return descricao;
 	}
 
 	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+		this.descricao = descrição;
 	}
 
 	public String getPrazo() {
@@ -87,6 +93,15 @@ public class Proposta implements Serializable{
 	public void setPrazo(String prazo) {
 		this.prazo = prazo;
 	}
+	
+	public Usuario getPropostaFeitaUsuario() {
+		return propostaFeitaUsuario;
+	}
+
+	public void setPropostaFeitaUsuario(Usuario propostaFeitaUsuario) {
+		this.propostaFeitaUsuario = propostaFeitaUsuario;
+	}
+
 
 	@Override
 	public int hashCode() {

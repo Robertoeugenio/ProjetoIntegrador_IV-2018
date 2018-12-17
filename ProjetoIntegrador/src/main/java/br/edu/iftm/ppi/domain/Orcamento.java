@@ -37,8 +37,8 @@ public class Orcamento implements Serializable{
 	@JoinColumn(name="proposta_id")
 	private Proposta propostaOrcamento;
 //	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="orcamentoFinal")
-	private Proposta propostaEscolhida;
+//	@OneToOne(cascade=CascadeType.ALL, mappedBy="orcamentoFinal")
+//	private Proposta propostaEscolhida;
 	
 	
 	

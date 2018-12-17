@@ -5,8 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.edu.iftm.ppi.domain.Fazenda;
+import br.edu.iftm.ppi.domain.Proposta;
 import br.edu.iftm.ppi.domain.Usuario;
 import br.edu.iftm.ppi.repositories.FazendaRepository;
+import br.edu.iftm.ppi.repositories.PropostaRepository;
 import br.edu.iftm.ppi.repositories.UsuarioRepository;
 
 import java.util.Arrays;
@@ -24,6 +26,9 @@ public class ProjetoIntegradorApplication implements CommandLineRunner {
 	@Autowired
 	private FazendaRepository fazendaRepository;
 	
+	@Autowired
+	private PropostaRepository propostaRepository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoIntegradorApplication.class, args);
 	}
@@ -38,7 +43,11 @@ public class ProjetoIntegradorApplication implements CommandLineRunner {
 		Fazenda faz1 = new Fazenda(null,"Bom Caminho",234434.3434,23232323.2232323, user1);
 		Fazenda faz2 = new Fazenda(null,"Olhos Dágua",98786764.3434,22323.2323, user1);
 		
+		Proposta prop1 = new Proposta(null,"proposta teste de sala de aula","30/11/2018",user1);
+				
+			
 		user1.getFazendas().addAll(Arrays.asList(faz1,faz2));
+		user1.getPropostas().addAll(Arrays.asList(prop1));
 		//user2.getFazendas().addAll(Arrays.asList(faz2));
 		
 		
