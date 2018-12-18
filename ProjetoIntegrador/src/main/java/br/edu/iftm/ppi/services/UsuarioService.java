@@ -38,14 +38,10 @@ public class UsuarioService {
 		return obj;
 		
 	}
-//	
-//	public Usuario update(Usuario obj) {
-//		Usuario newObj = find(obj.getId());
-//		updateData(newObj, obj);
-//		return repo.save(newObj);
-//		
-//	}
-//	
+	
+	
+
+	
 	public void delete(Integer id) {
 		find(id);
 		try {
@@ -61,42 +57,20 @@ public class UsuarioService {
 		return repo.findAll();
 		
 	}
+
 //	
-//	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
-//		
-//		PageRequest pageRequest =  PageRequest.of(page,linesPerPage, Direction.valueOf(direction), orderBy);
-//		return repo.findAll(pageRequest);
-//	}
-//	
-//	public Cliente fromDTO(ClienteDTO objDto) {
-//		
-//		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null);
-//
-//	}
-//	
-//	public Cliente fromDTO(ClienteNewDTO objDto) {
-//		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfOuCnpj(), TipoCliente.toEnum(objDto.getTipo()));
-//Cidade cid = cidadeRepository.getOne(objDto.getCidadeId());
-//		Endereco end = new Endereco(null,objDto.getLogradouro(),objDto.getNumero(),objDto.getComplemento(), objDto.getBairro(),objDto.getCep(), cli, cid);
-//	
-//	cli.getEnderecos().add(end);
-//	cli.getTelefones().add(objDto.getTelefone1());
-//	if(objDto.getTelefone2()!= null) {
-//		
-//		cli.getTelefones().add(objDto.getTelefone2());
-//	}
-//if(objDto.getTelefone2()!= null) {
-//		
-//		cli.getTelefones().add(objDto.getTelefone2());
-//		
-//		return cli;
-//	}
-//return cli;
-//	}
-//	
-//	private void updateData(Cliente newObj, Cliente obj) {
-//		newObj.setNome(obj.getNome());
-//		newObj.setEmail(obj.getEmail());
-//		
-//	}
+	private void updateData(Usuario newObj,Usuario obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
+		newObj.setLogin(obj.getLogin());
+		newObj.setCpf(obj.getCpf());
+		newObj.setSenha(obj.getSenha());
+		
+	}
+	
+	
+
+		
+		
+	
 }
